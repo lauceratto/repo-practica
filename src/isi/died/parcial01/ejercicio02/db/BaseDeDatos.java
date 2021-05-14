@@ -18,9 +18,8 @@ public class BaseDeDatos {
 		// simula una llamada a una base de datos
 	}
 	
-	public void guardar(Examen i) throws BaseDeDatosExcepcion, InscripcionException {
+	public void guardar(Examen i) throws BaseDeDatosExcepcion {
 		if(i == null) throw new BaseDeDatosExcepcion(i);
-		if(i.getNota().intValue()<6) throw new InscripcionException();
 		// simula una llamada a una base de datos
 
 	}

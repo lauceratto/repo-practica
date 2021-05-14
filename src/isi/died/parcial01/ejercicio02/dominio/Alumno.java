@@ -26,6 +26,26 @@ public class Alumno {
 	}
 
 
+	public List<Inscripcion> getMateriasCursadas() {
+		return materiasCursadas;
+	}
+
+
+	public void setMateriasCursadas(List<Inscripcion> materiasCursadas) {
+		this.materiasCursadas = materiasCursadas;
+	}
+
+
+	public List<Examen> getExamenes() {
+		return examenes;
+	}
+
+
+	public void setExamenes(List<Examen> examenes) {
+		this.examenes = examenes;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

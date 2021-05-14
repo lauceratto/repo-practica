@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import isi.died.parcial01.ejercicio02.db.BaseDeDatos;
-import isi.died.parcial01.ejercicio02.db.BaseDeDatosExcepcion;
 import isi.died.parcial01.ejercicio02.dominio.*;
+
+
 
 
 public class MySysAcadImpl implements MySysAcad {
 	private static final BaseDeDatos DB = new BaseDeDatos();
-
 
 	private List<Materia> materia = new ArrayList<Materia>();
 	
@@ -45,14 +45,38 @@ public class MySysAcadImpl implements MySysAcad {
 	}
 
 	@Override
-	public void inscribirAlumnoExamen(Docente d, Alumno a, Materia m) throws BaseDeDatosExcepcion {
+	public void inscribirAlumnoExamen(Docente d, Alumno a, Materia m) {
 		Examen e = new Examen();
 		a.addExamen(e);
 		d.agregarExamen(e);
 		m.addExamen(e);
 		// DESCOMENTAR Y gestionar excepcion
-		DB.guardar(e);
+		// DB.guardar(e);
 	}
+	
+	public void registrarNota(Integer nota, Examen e) {
+		e.setNota(nota);
+		Alumno alumno1 = e.getAlumno();
+
+		Inscripcion insc = new Inscripcion();
+		for(Inscripcion inscripcion : alumno1.getMateriasCursadas()) {
+			if(inscripcion.getMateria().equals(e.getMateria())) {
+				insc = inscripcion;
+			}
+		}
+		if(nota >= 6) {				
+			insc.setEstado(Inscripcion.Estado.PROMOCIONADO);
+		}
+	}
+
+
+	@Override
+	public List<Examen> topNExamenes(Alumno a, Integer n, Integer nota) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	
 
 }
