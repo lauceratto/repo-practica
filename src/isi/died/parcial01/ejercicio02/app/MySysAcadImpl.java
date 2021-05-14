@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import isi.died.parcial01.ejercicio02.db.BaseDeDatos;
+import isi.died.parcial01.ejercicio02.db.BaseDeDatosExcepcion;
 import isi.died.parcial01.ejercicio02.dominio.*;
 
 
@@ -44,13 +45,13 @@ public class MySysAcadImpl implements MySysAcad {
 	}
 
 	@Override
-	public void inscribirAlumnoExamen(Docente d, Alumno a, Materia m) {
+	public void inscribirAlumnoExamen(Docente d, Alumno a, Materia m) throws BaseDeDatosExcepcion {
 		Examen e = new Examen();
 		a.addExamen(e);
 		d.agregarExamen(e);
 		m.addExamen(e);
 		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(e);
+		DB.guardar(e);
 	}
 	
 
